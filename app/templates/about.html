@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+<head>
+    <title> {% block title %} TigerResearch - About {% endblock %} </title>
+</head>
+
+{% block content %}
+
+<body>
+    <div class="container" style="width:85%">
+        <div class="row" style="height:40%;">
+            <div class="col-md-12 text-center align-middle" id="header-content">
+                <br>
+                <h1 style="color: white;">
+                    <strong>About TigerResearch</strong>
+                </h1>
+                <br>
+                <p style="text-align: left; font-size: 20px; color: white;">
+                    TigerResearch helps students easily search and find professors matching their own research interests. Whether you're a curious student interested in independent research or a junior/senior looking for IW/Thesis projects, we hope this website is useful in your search.  
+                    <p style="text-align: center; font-size: 20px; color: white;">Good luck with your journey in research and we hope you enjoy our website!</p>
+                    <br>
+                </p>
+            </div>
+                
+        </div>
+        <div class="row" style="height:40%">
+            <div class="col-md-4 text-center align-middle" style="background-color: black">
+                <img src="../static/assets/files/eric.png" class="rounded-circle" style="border: 1px solid #f54000;; border-radius: 2%"
+                    height=200px>
+                <p style="margin-top: 10px; font-size: 18px; color: #f54000;">
+                    Eric Ahn
+                    <p style="margin-top: -10px; font-size: 18px; color: white;"> ericahn@princeton.edu</p>
+                </p>
+            </div>
+            <div class="col-md-4 text-center align-middle" style="background-color: black">
+                <img src="../static/assets/files/vivek.png" class="rounded-circle" style="border: 1px solid #f54000;; border-radius: 2%" height=200px>
+                <p style="margin-top: 10px; font-size: 18px; color: #f54000;">
+                    Vivek Kolli
+                    <p style="margin-top: -10px; font-size: 18px; color: white;"> vkolli@princeton.edu</p>
+                </p>
+            </div>
+            <div class="col-md-4 text-center align-middle" style="background-color: black">
+                <img src="../static/assets/files/alex.jpg" class="rounded-circle" style=" border: 1px solid #f54000;; border-radius: 2%" height=200px>
+                <p style="margin-top: 10px; font-size: 18px; color: #f54000;">
+                    Alex Zhang
+                    <p style="margin-top: -10px; font-size: 18px; color: white;"> alzhang@princeton.edu</p>
+                </p>
+            </div>
+        </div>
+        <div class="row" style="height:10vh;">
+            <div class="col-md-12 text-center align-middle" style="background-color: black">
+            <p style="margin-top: 30px;text-align: center; font-size: 20px; color: #f54000;">
+                <strong>Advisors:</strong> 
+            </p>
+            <p style="margin-top: -10px; text-align: center; font-size: 20px; color: white;">Professor John Danner</p>
+            <p style="margin-top: -10px; text-align: center; font-size: 20px; color: white;">Professor Jérémie Lumbroso</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}

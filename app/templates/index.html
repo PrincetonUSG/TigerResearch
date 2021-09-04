@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+<head>
+    <title> {% block title %} TigerResearch {% endblock %} </title>
+</head>
+
+{% block content %}
+
+{% if display is defined %}
+<body onload="load_profile('{{ display.netid }}')">
+{% else %}
+<body>
+{% endif %}
+<div>
+    <section class="columns">
+    <div class="container no-padding" style="height: 100%;">
+        <br>
+        <div class="container no-padding">
+            <div class="col-md-1" style="background-color: #000" ></div>
+            <div class="col-md-9">
+                <div id="search-container" class="container input-group">
+                    <input class="form-control py-2" id="listSearch" type="text" maxlength=200 placeholder="Search for a Professor or Keyword..."
+                        value="{{search}}">
+                    <div class="input-group-btn">
+                        <button type="button" id="search-btn" class="btn btn-primary" onclick="search_btn()">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1" style="background-color: #000" id="search-results-num">
+                <h3 class="panel-title" style="text-align: center; color: #fff; margin-top: 5px;">0 Search Results</h3>
+            </div>
+            <div class="col-md-1" style="background-color: #000">
+                <div class="donut" id="loadingDiv"></div>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div class="col-md-2 no-padding" style="background-color:rgb(0,0,0)">
+            <div class="panel panel-primary" id="filter_panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Departments</h3>
+                </div>
+                <div class="filter panel-body scrollable" style="background-color:rgb(224, 224, 224)">
+                    <div class="list-group list-group-filter" id="filterlist">
+                        {% for cat in categories %}
+                        <label for="{{ cat[0] }}">
+                            <input id="{{ cat[0] }}" type="checkbox" class="check" onclick="tick_checkbox({{ cat[0] }})" value="0">
+                            <div class="f-button" title="{{ cat[2] }}" id="btn_{{ cat[0] }}">
+                                <span class style="font-size: 14px; color: {{ cat[1] }}"> <strong>{{ cat[0] }}</strong></span>
+                            </div>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 no-padding d-flex flex-column align-items-stretch flex-shrink-0" style="background-color:rgb(0,0,0)">
+            <div class="panel panel-primary" id="result_panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Professors</h3>
+                </div>
+                <div class="display panel-body panel-body-search scrollable" style="background-color: #f0f0f0">
+                    <div id="search-results" class="list-group list-group-search" role="tablist">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 no-padding" style="background-color:rgb(0,0,0)">
+            <div class="panel panel-primary" id="info_panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="color:white">Profile</h3>
+                </div>
+                <div id="display-info" class="display panel-body panel-body-profile scrollable" id="nav-tabContent">
+                    <center> 
+                        <h1> Welcome to TigerResearch! </h1>
+                        <img src="{{url_for('static', filename='assets/files/tiger_l.png')}}" height=180px>
+                    </center>
+                    <br>
+                    <div class="col-md-4" style="background-color: transparent">
+                        <div class="well well-sm" style="height: 175px; text-align: center"> 
+                            <h3 style="color: #fd885d"> Filters </h3>
+                            Select specific departments to search from by clicking on them in the left-most column. 
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="background-color: transparent">
+                        <div class="well well-sm" style="height: 175px; text-align: center">
+                            <h3 style="color: #fd885d"> Keywords </h3>
+                            Search for specific research topics or professor names using the search bar above.
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="background-color: transparent">
+                        <div class="well well-sm" style="height: 175px; text-align: center">
+                            <h3 style="color: #fd885d"> Search </h3>
+                            Find relevant professors and select them to display their profile in this panel.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+</div>
+</body>
+
+<script type="text/javascript" src="{{url_for('static', filename='assets/scripts/search.js')}}"> </script>
+<script type="text/javascript" src="{{url_for('static', filename='assets/scripts/display.js')}}"> </script>
+
+{% endblock %}

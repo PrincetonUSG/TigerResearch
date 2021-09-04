@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+<div id="search-container" class="container">
+    <input class="form-control" id="listSearch" type="text" placeholder="Search a Professor or Keyword...">
+    <br>
+    <hfilt> Active Filters: </hfilt>
+    <a href="#" class="searchbar_filter"> COS 
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </a>
+    <a href="#" class="searchbar_filter"> ECO 
+        <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </a>
+</div>
+<div>
+    <section class="columns">
+    <div class="container" style="height: 100%;">
+        <div class="row">
+            <div class="col-md-2" style="background-color:rgb(255, 255, 255)">
+                <div class="panel panel-primary" id="filter_panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Filters</h3>
+                    </div>
+                    <div class="filter panel-body scrollable">
+                        <div class="list-group list-group-filter scrollable" id="filterlist">
+                            {% for cat in categories %}
+                                {% set catvar = cat.split('  ') %}
+                                <button class="button button--winona button--border-thin button--round-s" 
+                                    data-text="Add to search">
+                                    <span> <strong>{{ catvar[0] }}</strong>&nbsp; {{ catvar[1] }} </span>
+                                </button>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-5 d-flex flex-column align-items-stretch flex-shrink-0">
+                <div class="panel panel-primary" id="result_panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">List of Professors</h3>
+                    </div>
+                    <div class="display panel-body scrollable">
+                        <div id="search-results" class="list-group list-group-search" role="tablist">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="panel panel-primary" id="info_panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Information</h3>
+                    </div>
+                    <div id="display-info" class="display panel-body scrollable" id="nav-tabContent">
+                        {% if display is defined %}
+                            <div class="display panel-body" id="display-prof-{{ display.netid }}">
+                                <center>
+                                    <h2> {{ display.name }}</h2>
+                                </center>
+                                <div style="text-align: center" class="h5 font-weight-300"> {{ display.keywords }} </div>
+                                <table class="table table-hover table-sm table-properties">
+                                    <tr v-show="department">
+                                        <th>Department: </th>
+                                        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 20rem;">
+                                            {{ display.department }} </td>
+                                    </tr>
+                                    <tr v-show="available">
+                                        <th>Status: </th>
+                                        <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 20rem;">Available
+                                            for IW/Thesis Advising</td>
+                                    </tr>
+                                    <tr v-show="email">
+                                        <th>Email</th>
+                                        <td> {{ display.email }}</td>
+                                    </tr>
+                                    <tr v-show="website">
+                                        <th>Website</th>
+                                        <td><a href="# {{ display.website }} "> {{ display.website }} </a></td>
+                                    </tr>
+                                </table>
+                                <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Publications</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item">Default 1</li>
+                                    <li class="list-group-item">Default 2</li>
+                                    <li class="list-group-item">Default 3</li>
+                                </ul>
+                            </div>
+                        {% else %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+</div>
+</body>
+
+<script type="text/javascript" src="{{url_for('static', filename='assets/scripts/search.js')}}"> </script>
+<script type="text/javascript" src="{{url_for('static', filename='assets/scripts/display.js')}}"> </script>
+
+{% endblock %}

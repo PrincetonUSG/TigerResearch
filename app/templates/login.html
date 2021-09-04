@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+
+<div class="row" style="height:80vh">
+    <div class="col-md-2" style="background-color: transparent"></div>
+    <div class="col-md-8 text-center align-middle" id="header-content">
+        <br>
+        <h1 style="color: white; font-family:Actor"><strong>Welcome to TigerResearch!</strong></h1>
+        <br>
+        <p style="font-size: 20px; color: white;"> We help Princeton students find information about their professors for their research or independent work based on matching interests. </h3>
+    </div>
+    <div class="login-box">
+        <form>
+            <center>
+                <a href="/login">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Click here to Login
+                </a>
+            </center>
+        </form>
+    </div>
+    <div class="col-md-2" style="background-color: transparent"></div>
+    <center>
+        <p> </p>
+        <img src="{{url_for('static', filename='assets/files/demo.gif')}}">
+    </center>
+</div>
+
+</body>
+
+{% endblock %}
