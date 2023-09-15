@@ -109,7 +109,7 @@ function display_profile (id) {
                 "<ul class=\"list-group\">"
             value.faculty.forEach(function (element) {
                 data += "<li class=\"list-group-item\">" +
-                    "<a href=\"//" + "tiger-research.herokuapp.com/?q=" + element[0] + "\" target=\"_blank\">" + element[0] + "</a>" +
+                    "<a href=\"//" + "research.tigerapps.org/?q=" + element[0] + "\" target=\"_blank\">" + element[0] + "</a>" +
                     "</li>"
             })
 
